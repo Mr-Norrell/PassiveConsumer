@@ -1,0 +1,5 @@
+extensions/passiveconsumer.cpp
+extensions/passiveconsumer.hpp
+extensions/prodconsumer.hpp
+extensions/prodcunsumer.cpp
+scenarios/getme-simple.cpp
