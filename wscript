@@ -40,8 +40,6 @@ def configure(conf):
         os.environ['PKG_CONFIG_PATH'] = ':'.join([
             '/usr/local/lib/pkgconfig',
             '/opt/local/lib/pkgconfig'])
-    conf.check_cfg(package='libndn-cxx', args=['--cflags', '--libs'],
-                   uselib_store='NDN_CXX', mandatory=True)
 
     try:
         conf.check_ns3_modules(MANDATORY_NS3_MODULES)
@@ -84,7 +82,8 @@ def build (bld):
             features = ['cxx'],
             source = [scenario],
             use = deps + " extensions",
-            includes = "extensions"
+            includes = "extensions",
+            export_includes = "extensions"
             )
 
     for scenario in bld.path.ant_glob (['scenarios/*.cpp']):
@@ -94,7 +93,6 @@ def build (bld):
             features = ['cxx'],
             source = [scenario],
             use = deps + " extensions",
-            includes = "extensions"
             )
 
 def shutdown (ctx):
